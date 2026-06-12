@@ -1,4 +1,4 @@
-from app.db_client import create_appointment, get_all_appointments, update_appointment, cancel_appointment
+from app.db_client import create_appointment, get_all_appointments, update_appointment, cancel_appointment, get_appointment_by_id
 
 
 def book_appointment(data):
@@ -13,3 +13,6 @@ def update_booking(appointment_id: int, data):
 
 def cancel_booking(appointment_id: int):
     return cancel_appointment(appointment_id)
+
+def get_appointment_by_id(appointment_id: int):
+    return get_appointment_by_id(appointment_id)
