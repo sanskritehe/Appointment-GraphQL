@@ -1,9 +1,10 @@
 import strawberry
+from app.graphql.resolvers import resolve_appointment_by_id
 from app.services.booking_service import (
     book_appointment,
     list_appointments,
     update_booking,
-    cancel_booking
+    cancel_booking,
 )
 
 @strawberry.type
@@ -15,6 +16,10 @@ class Appointment:
 
 @strawberry.type
 class Query:
+    @strawberry.field(name="appointmentById")
+    def appointment_by_id(self, id: int) -> Appointment:
+        return resolve_appointment_by_id(id)
+
     @strawberry.field
     def appointments(self) -> list[Appointment]:
         raw_appointments = list_appointments()
@@ -27,6 +32,7 @@ class Query:
             )
             for appt in raw_appointments
         ]
+
 
 @strawberry.type
 class Mutation:

@@ -10,4 +10,4 @@ app.include_router(appointments.router)
 
 # Include new GraphQL router
 graphql_router = GraphQLRouter(schema)
-app.include_router(graphql_router, prefix="/graphql")
+app.include_router(graphql_router, prefix="/graphql")

@@ -27,3 +27,10 @@ def cancel_appointment(appointment_id: int):
         f"{DB_SERVICE_URL}/appointments/{appointment_id}"
     )
     return response.json()
+
+def get_appointment_by_id(appointment_id: int):
+    response = requests.get(f"{DB_SERVICE_URL}/appointments/{appointment_id}")
+    if response.status_code == 404:
+        return None
+    response.raise_for_status()
+    return response.json()
